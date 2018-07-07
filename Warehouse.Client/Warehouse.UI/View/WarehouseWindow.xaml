@@ -1,0 +1,85 @@
+﻿<Window
+    x:Class="Warehouse.UI.View.WarehouseWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Warehouse.UI.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="clr-namespace:Warehouse.UI.ViewModel"
+    Name="Warehouse"
+    Title="Warehouse"
+    Width="786"
+    Height="350"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <viewModel:WarehouseWindowViewModel />
+    </Window.DataContext>
+    <Grid>
+        <DataGrid
+            Name="WarehouseGoodsCollection"
+            Margin="0,22,0,0"
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
+            ItemsSource="{Binding WarehouseGoodsCollection, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, Mode=TwoWay}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="25"
+                    Binding="{Binding GoodsId, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, Mode=TwoWay}"
+                    Header="Id" />
+                <DataGridTextColumn
+                    Width="100"
+                    Binding="{Binding Title, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, Mode=TwoWay}"
+                    Header="Title" />
+                <DataGridTextColumn
+                    Width="100"
+                    Binding="{Binding Provider.ProviderId, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, Mode=TwoWay}"
+                    Header="Provider" />
+                <DataGridTextColumn
+                    Width="100"
+                    Binding="{Binding GoodsCategory.Title, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, Mode=TwoWay}"
+                    Header="Category" />
+                <DataGridTextColumn
+                    Width="100"
+                    Binding="{Binding GoodsClass.Title, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, Mode=TwoWay}"
+                    Header="Class" />
+                <DataGridTextColumn Binding="{Binding Amount, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, Mode=TwoWay}" Header="Amount" />
+                <DataGridTextColumn Binding="{Binding UnitPrice, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, Mode=TwoWay}" Header="UnitPrice" />
+                <DataGridTextColumn Binding="{Binding DateTimeDelivery, StringFormat=dd-MM-yyyy, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, Mode=TwoWay}" Header="DateTimeDelivery" />
+                <DataGridTextColumn Binding="{Binding UnitPrice, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, Mode=TwoWay}" Header="UnitPrice" />
+                <DataGridTextColumn
+                    Width="65"
+                    Binding="{Binding State, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, Mode=TwoWay}"
+                    Header="State" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Menu
+            x:Name="Menu"
+            Width="780"
+            Height="22"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top">
+            <MenuItem Header="Window">
+                <MenuItem Command="{Binding WindowCloseCommand}" Header="Close" />
+            </MenuItem>
+            <MenuItem Header="Goods">
+                <MenuItem Command="{Binding OnWarehouseCommand}" Header="On warehouse" />
+                <Separator />
+                <MenuItem Command="{Binding DeliverCommand}" Header="Deliver" />
+                <Separator />
+                <MenuItem Command="{Binding SaleCommand}" Header="Sale" />
+            </MenuItem>
+            <MenuItem Header="Find">
+                <MenuItem Command="{Binding FindByProviderCommand}" Header="By provider" />
+                <Separator />
+                <MenuItem Command="{Binding FindByClassAndPeriodCommand}" Header="By class and period" />
+            </MenuItem>
+            <MenuItem Header="Report">
+                <MenuItem Command="{Binding ReportByPeriodAndTypeCommand}" Header="By period and type" />
+            </MenuItem>
+
+        </Menu>
+
+    </Grid>
+</Window>

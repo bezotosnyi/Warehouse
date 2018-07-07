@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0BD8457D-C16F-4E95-818F-F8E6094F62C4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Warehouse.DAL.SqlServer</RootNamespace>
+    <AssemblyName>Warehouse.DAL.SqlServer</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DeliveryRepository.cs" />
+    <Compile Include="GoodsCategoryRepository.cs" />
+    <Compile Include="GoodsClassRepository.cs" />
+    <Compile Include="GoodsOfDeliveryRepository.cs" />
+    <Compile Include="GoodsRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProviderRepository.cs" />
+    <Compile Include="SqlServerRepositoryBase.cs" />
+    <Compile Include="SaleRepository.cs" />
+    <Compile Include="StateRepository.cs" />
+    <Compile Include="UserRepository.cs" />
+    <Compile Include="WarehouseRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Warehouse.DAL.Common\Warehouse.DAL.Common.csproj">
+      <Project>{ED2BC82C-02AA-4409-BF55-37D67F121C52}</Project>
+      <Name>Warehouse.DAL.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Warehouse.DAL.Contract\Warehouse.DAL.Contract.csproj">
+      <Project>{CB73891F-EFB2-4F3D-B861-5A10DBF67EF0}</Project>
+      <Name>Warehouse.DAL.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Warehouse.Domain\Warehouse.Domain.csproj">
+      <Project>{320F4359-A990-4CF6-8ED1-56B7E587C8A6}</Project>
+      <Name>Warehouse.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
